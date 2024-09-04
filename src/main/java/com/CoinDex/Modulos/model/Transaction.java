@@ -1,37 +1,51 @@
 package com.CoinDex.Modulos.model;
 
-//Importación de paquetes 
+//Importación de paquetes jakarta.persistence, lombok y java.time
 
-//Import para definir el mapeo de un campo en una clase de la base de datos
 import jakarta.persistence.Column;
-
-//Import para marcar una clase como entidad que será mapeada en la base de datos
 import jakarta.persistence.Entity;
-
-//Import para indicar el campo que determina la clave primaria de la entidad
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-//Import para genera automaticamente los métodos de encapsulamiento (entre otros)
 import lombok.Data;
-
-//Import para el manejo de fechas (año, mes, día)
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
+
+/*
+Anotación Entity indica que la clase es una entidad JPA y se debe mapear en una base de datos.
+Anotación Data genera automáticamente los métodos getters y setters.
+*/
 @Entity
 @Data
 public class Transaction {
     
+    /*
+    Indica que este campo es la clave primaria de la entidad y 
+    que su valor se genera automáticamente por la base de datos.
+    */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long TransactionID;
     
+    //Indica que los valores de esta columna son de un tipo Enum y se almacenan como cadenas de texto.  
     @Column(nullable = false)
-    private String TransactionType;
+    @Enumerated(EnumType.STRING)
+    private transactionType TransactionType;
     
     @Column
     private Long Amount;
     
-    @Column 
-    private LocalDate TransactionDate;
+    @Column(nullable = false)
+    private LocalDateTime TransactionDate;
+    
+    //Definición de los valores permitidos para las columnas de tipo de cuenta y estado de cuenta.
+    public enum transactionType {
+        TRANSFER,
+        CHARGEBACK,
+    }
+    
 }
