@@ -21,21 +21,21 @@ public class Customer {
     @Column
     private Long CustomerID;
     
-    @Column(nullable = false, length = 25)
+    @Column(nullable = false, length = 40)
     private String FirstName;
     
-    @Column(nullable = false, length = 25)
+    @Column(nullable = false, length = 40)
     private String LastName;
     
     @Column(nullable = false)
     private LocalDate DateOfBirth;
     
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 50, unique = true)
     private String Email;
     
-    @Column(nullable = false)
-    private int PhoneNumber;
+    @Column(nullable = false, length = 10)
+    private String PhoneNumber;
     
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 40)
     private String Address;
 }

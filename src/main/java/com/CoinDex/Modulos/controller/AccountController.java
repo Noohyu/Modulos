@@ -34,8 +34,8 @@ public class AccountController {
     la creación de una cuenta.
     */
     @PostMapping("/new_account")
-    public Account newAccount(@RequestBody Account account){
-        return this.accountService.newAccount(account);
+    public Account newAccount(@RequestBody Account newAccount){
+        return this.accountService.newAccount(newAccount);
     }
     
     //Mapea solitudes HTTP Get y devuelve una lista de todas las cuentas.

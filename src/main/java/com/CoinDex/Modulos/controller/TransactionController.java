@@ -32,7 +32,7 @@ public class TransactionController {
         return this.transactionService.modifyTransaction(transaction);
     }
     
-    @PostMapping(value="/id")
+    @PostMapping(value="/{id}")
     public Boolean deleteTransaction(@PathVariable(value="id") Long id){
         return this.transactionService.deleteTransaction(id);
     }

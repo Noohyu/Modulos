@@ -32,7 +32,7 @@ public class CustomerController {
         return this.customerService.modifyCustomer(customer);
     }
     
-    @PostMapping(value="/id")
+    @PostMapping(value="/{id}")
     public Boolean deleteCustomer(@PathVariable(value="id") Long id){
         return this.customerService.deleteCustormer(id);
     }

@@ -32,7 +32,7 @@ public class BankController {
         return this.bankService.modifyBank(bank);
     }
     
-    @PostMapping(value="/id")
+    @PostMapping(value="/{id}")
     public Boolean deleteBank(@PathVariable(value="id") Long id){
         return this.bankService.deleteBank(id);
     }
